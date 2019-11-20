@@ -1,0 +1,9 @@
+br\com\alura\Academia\Controller\AlunoController.class
+br\com\alura\Academia\ControllerInstrutor\InstrutorController.class
+br\com\alura\Academia\Repository\AlunoRepository.class
+br\com\alura\Academia\Model\Aluno.class
+br\com\alura\Academia\Configuracao.class
+br\com\alura\Academia\ModelInstrutor\Instrutor.class
+br\com\alura\Academia\ServiceInstrutor\InstrutorService.class
+br\com\alura\Academia\RepositoryInstrutor\InstrutorRepository.class
+br\com\alura\Academia\service\AlunoService.class

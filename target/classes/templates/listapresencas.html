@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Conten-Type" content="text/html;charset=UTF-8" />
+<title>Lista de Presencas</title>
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+<style type="text/css">
+body {
+	background-image: url("../img/academia.jpg");
+}
+
+<h1>{color:white;
+
+
+}
+body {
+	color: white;
+	text-shadow: 1px 0px 0px black, -1px 0px 0px black, 0px 1px 0px black,
+		0px -1px 0px black;
+	font-size: 18px;
+	font-weight: bold;
+	color: white;
+}
+
+th { 
+	font-size: 20px;
+	color: white;
+	
+	}
+	
+span {
+	font-size: 13px;
+	color: white;
+}
+
+.btn {
+	text-shadow: none;
+}
+
+.btn-large {
+	width: 100%
+}
+
+.align-center {
+	text-align: center;
+}
+
+.left-btn {
+	padding-right: 6px !important;
+}
+
+.right-btn {
+	padding-left: 6px !important;
+}
+
+
+.pp {
+	color: red;
+}
+</style>
+</head>
+<body>
+<div class="container">
+		<div id="listaDePresencas">
+			<div align="center">
+
+				<div align="left">
+					<a class="btn btn-outline-light" href="/">Página Inicial</a>
+				</div>
+
+				<h1>Presença dos Alunos</h1>			
+			
+
+				<div th:if="${message}" class="alert alert-success" role="alert">
+					<p th:text="${message}">success message</p>
+				</div>
+
+				<table class="table table-hover">
+				
+				<thead>
+						<tr>
+
+							<th>Matrícula</th>
+							<th>Dia de Aula</th>
+							
+							
+						</tr>
+
+					</thead>
+					
+						<tr th:each="presenca : ${presenca}">				
+						
+						<td><span th:text="${presenca.matricula}"></span></td>
+						<td><span th:text="${presenca.diaaula}"></span></td>
+											
+						
+						<td class="align-center left-btn"><a
+							class="btn btn-sm btn-primary btn-large "
+							th:href="@{/editarpresenca/{idpresenca}(idpresenca=${presenca.id})}">Editar</a></td>
+							
+						<td class="align-center right-btn"><a
+							class="btn btn-sm btn-primary btn-large "
+							th:href="@{/deletarpresenca/{idpresenca}(idpresenca=${presenca.id})}">Excluir</a></td>
+					</tr>
+					
+						</table>
+			</div>
+		</div>
+		<hr />
+
+		<form action="http://localhost:8080/salvarpresenca" method="post"
+			th:object="${idpresenca}">
+			
+				<input type="hidden" class="form-control" id="idPresenca" name="idPresenca"
+				th:value="${presencaEdit?.id}" /> 
+				
+				
+				<div class="form-group ">
+				<label for="matricula">Matrícula</label> <input type="text"
+					class="form-control" id="matricula" name="matricula"
+					th:value="${presencaEdit?.matricula}" placeholder="Matrícula">
+					</div>
+				
+				<div class="form-group">
+				<label for="diaaula">Dia da Aula</label> <input type="text" 
+					id="diaaula" name="diaaula" class="form-control"
+					th:value="${(presencaEdit?.diaaula)}" placeholder="Dia da Semana"/>
+					</div>					
+									
+					
+						<button type="submit" class="btn btn-success">Salvar</button>
+
+			<INPUT TYPE="Button" class="btn btn-danger" VALUE="Voltar"
+				onClick="history.go(-1)">
+		</form>
+		</div>
+	
+	
+</body>
+</html>
+				

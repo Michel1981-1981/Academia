@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Conten-Type" content="text/html;charset=UTF-8" />
+<title>Lista de Atividades</title>
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+<style type="text/css">
+body {
+	background-image: url("../img/academia.jpg");
+}
+
+<h1>
+{color:white; 
+
+}
+body {
+	color: white;
+	text-shadow: 1px 0px 0px black, -1px 0px 0px black, 0px 1px 0px black,
+		0px -1px 0px black;
+	font-size: 18px;
+	font-weight: bold;
+	color: white;
+}
+
+th{font-size:20px;
+color: white;
+}
+
+span{font-size:13px;
+color: white;
+}
+
+.btn {
+	text-shadow: none;
+}
+
+.btn-large {
+	width: 100%
+}
+
+.align-center{
+	text-align: center;
+}
+
+.left-btn {
+	padding-right: 6px !important;
+}
+
+.right-btn{
+ 	padding-left: 6px !important;
+}
+</style>
+</head>
+<body>
+</head>
+<body>
+
+	<div class="container">
+		<div id="listaDeAtividades">
+			<div align="center">
+			
+			<div align="left">
+					<a class="btn btn-outline-light" href="/">Página Inicial</a>
+			</div>
+			
+				<h1>Atividades</h1>
+				
+				<div th:if="${message}" class="alert alert-success" role="alert">	
+				<p	th:text=	"${message}">success message </p>
+				</div>
+					
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>Nome da Aula</th>
+							<th>Horário</th>							
+							<th>Instrutor</th>							
+							<th>Dia da Semana</th>
+							<th>Sala</th>
+							<th>Tipo de Aula</th>
+							
+						</tr>
+					</thead>
+					<tr th:each="atividade : ${atividades}">
+						<td><span th:text="${atividade.aula}"></span></td>
+						<td><span th:text="${atividade.horario}"></span></td>	
+						<td><span th:text="${atividade.instrutor}"></span></td>				
+						<td><span th:text="${atividade.dia}"></span></td>
+						<td><span th:text="${atividade.sala}"></span></td>
+						<td><span th:text="${atividade.tipoaula}"></span></td>
+						<td class="align-center left-btn"><a class="btn btn-sm btn-primary btn-large "
+							th:href="@{/editaratividade/{idatividade}(idatividade=${atividade.id})}">Editar</a></td>
+						<td class="align-center right-btn"><a class="btn btn-sm btn-primary btn-large "
+							th:href="@{/deletaratividade/{idatividade}(idatividade=${atividade.id})}">Excluir</a></td>
+					</tr>
+
+				</table>
+			</div>
+		</div>
+		<hr />
+
+		<form action="http://localhost:8080/salvaratividade" method="POST"
+			th:object="${idatividade}">
+
+
+		<input type="hidden" class="form-control" id="idAtividade" name="idAtividade"
+				th:value="${atividadeEdit?.id}" />
+				
+
+		<div class="form-group">
+				<label for="aula">Nome da Aula</label> <input type="text"
+					class="form-control" id="aula" name="aula"
+					th:value="${atividadeEdit?.aula}" placeholder="Nome da Aula" />
+			</div>
+			<div class="form-group">
+				<label for="horario">Horário</label> <input type="text"
+					class="form-control" id="horario" name="horario"
+					th:value="${atividadeEdit?.horario}" placeholder="Horário" />
+			</div>
+			
+ 				
+				<div class="form-group">
+				<label for="instrutor">Instrutor</label>
+							
+				  <select class="mdb-select md-form" name="instrutor"> 	
+					<option value="">Selecione</option>
+					 <option value="João">João</option>				    
+				    <option value="José">José</option>	  
+				    <option value="Carlos">Carlos</option>		
+				    	<option value="Luis">Luis</option>    
+				    	<option value="Maria">Maria</option> 
+				    	<option value="Patricia">Patricia</option>  
+					</select>
+                   
+   				 </div>
+
+
+	
+			<div class="form-group">
+				<label for="dia">Dia da Semana</label> <input type="text" class="form-control"
+					id="dia" name="dia" th:value="${atividadeEdit?.dia}" placeholder="Dia da Semana" />
+			</div>
+			<div class="form-group">
+				<label for="sala">Sala</label> <input type="text"
+					class="form-control" id="sala" name="sala" th:value="${atividadeEdit?.sala}"placeholder="Sala" />
+			</div>
+			
+				<div>	
+				<label for="tipoaula">Tipo de Aula</label>
+					<select class="mdb-select md-form" name="tipoaula"> 	
+					<option value="">Selecione</option>
+					 <option value="Musculação">Musculação</option>				    
+				    <option value="Power Jump">Power Jump</option>	  
+				    <option value="Body Combat">Body Combat</option>		
+				    	<option value="Crossfit">Crossfit</option>    
+				    	<option value="Pilates">Pilates</option> 
+				    	<option value="Funcional">Funcional</option>  
+					</select>
+			</div>
+			
+			
+
+			<button type="submit" class="btn btn-success">Salvar</button>
+			<INPUT TYPE="Button" class="btn btn-danger" VALUE="Voltar" onClick="history.go(-1)">
+
+		</form>
+
+	</div>
+	
+</body>
+</html>
+
+
