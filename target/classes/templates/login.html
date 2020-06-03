@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Conten-Type" content="text/html;charset=UTF-8" />
+<!-- <link href="/src/main/resources/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/> -->
+<style type="text/css">
+
+ body {
+ background-color: grey;
+  opacity: 0.6;
+}
+
+body {
+
+	color: white;
+	text-shadow: 3px 0px 0px black, -1px 0px 0px black, 0px 1px 0px black, 0px -1px 
+	0px black;
+	font-size: 35px;
+	font-weight: bold;
+	color: white;
+}
+
+button {
+    display:block;
+    text-shadow: 3px 0px 0px black, -1px 0px 0px black, 0px 1px 0px black, 0px -1px 0px black;
+    width:80px;
+    height:28px;
+    font-weight:bold;
+    color:white;    
+    border:gray;
+    background-color: silver;
+}
+
+
+</style>
+
+<div class="text-light" align="center" style="margin-top: 50px">
+
+<h1>Login</h1>
+
+
+<form action="/login" method="post">
+ 
+
+	<label for= "usuário">Usuario:</label> <input class="form-control" type="text" name="username" placeholder="Digite seu Usuario..."/> 
+		
+	
+	<label for="senha" >Senha:</label> <input type="password" name="password" placeholder="Confirme sua Senha..."/> 
+	
+	
+	<button type="submit" class="btn btn-warning btn-lg">Entrar</button>
+	
+	
+</form>
+
